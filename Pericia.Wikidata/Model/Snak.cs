@@ -22,12 +22,14 @@ namespace Pericia.Wikidata
 
     public class SnakDataValueContainer
     {
+        [JsonPropertyName("type")]
+        public string Type { get; set; } = default!;
+     
         //TODO :gestion values par type
         [JsonPropertyName("value")]
         public JsonElement Value { get; set; }
-
-        [JsonPropertyName("type")]
-        public string Type { get; set; } = default!;
+        public string? ValueId => Value.GetProperty("id").GetString();
+        public string? ValueString => Value.GetString();
     }
 
 

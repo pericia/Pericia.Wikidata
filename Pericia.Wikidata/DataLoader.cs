@@ -9,9 +9,9 @@ using System.Text.Json;
 
 namespace Pericia.Wikidata
 {
-    public class Downloader
+    public static class DataLoader
     {
-        public IEnumerable<Entity> LoadData()
+        public static IEnumerable<Entity> Load()
         {
             var url = "https://dumps.wikimedia.org/wikidatawiki/entities/latest-all.json.gz";
             var request = WebRequest.Create(url);

@@ -25,12 +25,13 @@ namespace Pericia.Wikidata
             string line;
             while ((line = reader.ReadLine()) != null)
             {
-                if (!line.TrimStart().StartsWith("{")) continue;
+                if (!line.StartsWith("{")) continue;
+                if (line.EndsWith(",")) line = line.Substring(0, line.Length - 1);
 
                 Entity? entity = null;
                 try
                 {
-                    entity = JsonSerializer.Deserialize<Entity>(line.Substring(0, line.Length - 1));
+                    entity = JsonSerializer.Deserialize<Entity>(line);
                 }
                 catch (Exception ex)
                 {
